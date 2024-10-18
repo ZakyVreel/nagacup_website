@@ -1,0 +1,29 @@
+@use 'scss/style';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'Minecraftia';
+  src: url('./assets/fonts/Minecraftia-Regular.ttf') format('truetype');
+  font-weight: normal; /* Définis le poids normal */
+  font-style: normal;   /* Style normal (pas italique) */
+}
+
+
+@font-face {
+  font-family: 'VCR';
+  src: url('./assets/fonts/VCRosdNEUE.ttf') format('truetype');
+  font-weight: normal; /* Définis le poids normal */
+  font-style: normal;   /* Style normal (pas italique) */
+}

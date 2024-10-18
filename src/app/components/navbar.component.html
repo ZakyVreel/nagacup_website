@@ -1,0 +1,86 @@
+<header class="header custom-bg-navbar top-0 shadow-md flex items-center justify-between px-8">
+
+  <div class="logo-container">
+    <div class="logo-image">
+      <img src="img/logo/nagacup_logo.png" alt="NagaCup Logo" />
+    </div>
+  
+    <div *ngIf="!hideTitle" class="nagacup-text show-text">
+      NAGACUP
+    </div>
+    <div *ngIf="hideTitle" class="nagacup-text hide-text">
+      NAGACUP
+    </div>
+  </div>
+
+  <!-- <h1 class="w-4/12 md:w-3/12">
+      <img src="img/logo/logo_title.png" class="w-26 md:w-36" />
+  </h1> -->
+
+  <!-- navigation -->
+  <nav class="nav text-white hidden md:block"> <!-- Masqué sur mobile, affiché à partir de "md" -->
+    <ul class="flex items-center space-x-1">
+      <!-- Menu Accueil -->
+      <li class="p-4 border-b-4 border-transparent" [class.border-white]="homeLink.isActive">
+        <a #homeLink="routerLinkActive" routerLink="/home" routerLinkActive="active-link" class="flex items-baseline" style="font-family: 'Poppins'; font-size: 1.2rem; font-weight: 600; letter-spacing: 0.5px;">
+          <img src="img/logo/home_logo.svg" alt="Home Icon" class="h-4 w-4 mr-2 relative top-[1px]" />
+          ACCUEIL
+        </a>
+      </li>
+
+      <!-- Menu Classement -->
+      <li class="p-4 border-b-4 border-transparent" [class.border-white]="leaderboardsLink.isActive">
+        <a #leaderboardsLink="routerLinkActive" routerLink="/leaderboards" routerLinkActive="active-link" class="flex items-baseline" style="font-family: 'Poppins'; font-size: 1.2rem; font-weight: 600; letter-spacing: 0.5px;">
+          <img src="img/logo/leaderboards_logo.svg" alt="Leaderboards Icon" class="h-4 w-4 mr-2 relative top-[1px]" />
+          CLASSEMENTS
+        </a>
+      </li>
+
+      <!-- Menu Rules -->
+      <li class="p-4 border-b-4 border-transparent" [class.border-white]="rulesLink.isActive">
+        <a #rulesLink="routerLinkActive" routerLink="/rules" routerLinkActive="active-link" class="flex items-baseline" style="font-family: 'Poppins'; font-size: 1.2rem; font-weight: 600; letter-spacing: 0.5px;">
+          <img src="img/logo/rules_logo.svg" alt="Rules Icon" class="h-4 w-4 mr-2 relative top-[1px]" />
+          RÈGLES
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="block md:hidden">
+    <button (click)="toggleMenu()" class="text-white">
+      <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z" clip-rule="evenodd"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Menu burger pour mobile -->
+  <nav *ngIf="isMenuOpen" class="mobile-nav fixed inset-0 text-white flex flex-col items-center justify-center space-y-6 z-index-999999">
+    <button (click)="toggleMenu()" class="absolute top-6 left-6 text-white">
+      <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <a (click)="toggleMenu()" routerLink="/home" class="text-2xl font-pixel tracking-wider">ACCUEIL</a>
+    <a (click)="toggleMenu()" routerLink="/leaderboards" class="text-2xl font-pixel tracking-wider">CLASSEMENTS</a>
+    <a (click)="toggleMenu()" routerLink="/rules" class="text-2xl font-pixel tracking-wider">RÈGLES</a>
+  </nav>
+
+  <div class="relative flex items-center search-container">
+    <input 
+      type="text" 
+      placeholder="Rechercher un joueur...." 
+      class="pr-10 pl-3 py-2.5 custom-input"
+      (keyup.enter)="onSearch()"
+      [(ngModel)]="searchQuery"
+      [ngClass]="{ 'input-error': searchHasError }"/>
+  
+    <button class="flex items-center justify-center rounded-full h-11 w-11 search-icon" (click)="onSearch()">
+      <svg class="h-8 w-8 p-1 text-white" aria-hidden="true" focusable="false" data-prefix="far" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path fill="currentColor" d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"></path>
+      </svg>
+    </button>
+  </div>
+  
+  
+</header>

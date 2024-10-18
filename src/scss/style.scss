@@ -1,0 +1,10 @@
+@use './_variables' as *;
+@use './_navbar' as *;
+@use './_leaderboards' as *;
+@use './_dropdowntitle' as *;
+@use './_home' as *;
+@use './_rules' as *;
+
+body {
+   background-color: $bg-color;
+}

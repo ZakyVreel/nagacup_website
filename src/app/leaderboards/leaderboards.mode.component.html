@@ -1,0 +1,52 @@
+<div class="table-container">
+    <table class="table">
+      <!-- En-tête du tableau avec position sticky -->
+      <thead>
+        <tr>
+          <th class="sticky-header"></th>
+          <th class="sticky-header"></th>
+          <th class="sticky-header"></th>
+          <th class="sticky-header">
+            <img [src]="getIconSrc()" alt="Icon" class="icon-large icon-center" />
+          </th>
+        </tr>
+      </thead>
+
+      <!-- Corps du tableau -->
+      <tbody class="table-leaderboards">
+
+        <tr *ngFor="let item of paginatedData; let i = index">
+          <td [ngClass]="{
+            'td-text-gold': this.getPosition(i) === 1,
+            'td-text-iron': this.getPosition(i) === 2,
+            'td-text-bronze': this.getPosition(i) === 3,
+            'td-pseudo': this.getPosition(i) > 3
+          }">{{ this.getPosition(i) }}</td>
+          <td class="td-avatar td-text">
+            <a [routerLink]="['/leaderboards/profile', item.uuid, item.username]">
+              <img src="https://minotar.net/avatar/{{ item.username }}/50.png" alt="ZakyVreel Avatar" class="h-10 w-10" />
+            </a>
+          </td>
+          <td class="td-pseudo">
+            <a [routerLink]="['/leaderboards/profile', item.uuid, item.username]">
+              <span>{{ item.username }}</span>
+            </a>
+          </td>
+          <td class="td-text">{{ this.getFormatTime(item.time) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flex justify-center items-center mt-4 pb-4">
+    <button *ngIf="this.currentPage !== 1" class="px-2 py-2 button-page rounded-lg" (click)="this.previousPage()">
+      <svg class="svg-previous" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M5.707 8.707a1 1 0 0 1 1.414 0l4.879 4.879 4.879-4.879a1 1 0 1 1 1.414 1.414l-5.5 5.5a1 1 0 0 1-1.414 0l-5.5-5.5a1 1 0 0 1 0-1.414z" clip-rule="evenodd"/>
+      </svg>
+    </button>
+    <button *ngIf="currentPage < totalPages" class="px-2 py-2 button-page rounded-lg ml-2" (click)="this.nextPage()">
+      <svg class="svg-next" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M5.707 8.707a1 1 0 0 1 1.414 0l4.879 4.879 4.879-4.879a1 1 0 1 1 1.414 1.414l-5.5 5.5a1 1 0 0 1-1.414 0l-5.5-5.5a1 1 0 0 1 0-1.414z" clip-rule="evenodd"/>
+      </svg>
+    </button>
+  </div>

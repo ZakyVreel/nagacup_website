@@ -1,0 +1,107 @@
+@use './_variables' as *;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.dropdown-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.title {
+  color: #FFF;
+  font-family: 'Poppins';
+  line-height: 60%;
+  font-style: normal;
+  font-size: $leaderboards-title-font-size;
+  font-weight: 1000;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
+  margin-right: 20px;
+}
+
+.dropdown-button {
+  background-color: #444343;
+  color: #FF005C;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  padding: 5px 3px 3px 10px;
+  font-family: 'Poppins';
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: $leaderboards-title-font-size;
+  font-weight: 1000;
+  line-height: 60%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  justify-content: space-between;
+}
+
+.dropdown-button:hover {
+  background-color: #FF005C;
+  color: #FFF;
+}
+
+.dropdown-button svg {
+  width: 40px;
+  height: 40px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.icon-arrow {
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.7));
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #444343;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  z-index: 100;
+  width: 100%;
+  left: 0;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+/* Élément du menu */
+.dropdown-content a {
+  display: block;
+  color: #FF005C !important;
+  font-family: 'Poppins', sans-serif;
+  font-size: $leaderboards-title-font-size;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 1000;
+  text-align: center;
+  padding: 12px;
+  line-height: 0.8;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  white-space: normal; /* Empêche le texte de dépasser et de passer à la ligne */
+ // word-wrap: break-word;
+  border-bottom: 1px solid #fff;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #FF005C !important;
+  color: #FFF !important;
+}
+
+.dropdown-content a:hover:last-child {
+  background-color: #FF005C;
+  color: #FFF;
+  border-radius: 0px 0px 10px 10px;
+}
+

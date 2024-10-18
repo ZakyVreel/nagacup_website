@@ -1,0 +1,116 @@
+<div class="main-container-profile">
+    <!-- Section contenant Profil et Statistiques alignés horizontalement -->
+    <div class="top-section">
+      <!-- Conteneur Profil -->
+      <div class="profile-container">
+        <div class="header-profile">
+          <h2>{{ this.username }}</h2>
+        </div>
+        <div class="avatar-section">
+          <div class="avatar-container">
+            <img src="https://visage.surgeplay.com/full/512/{{ this.uuid }}" alt="Avatar" class="avatar-image">
+            <span class="rank-number">#{{ this.getRank(this.globalRank.rank)  }}</span>
+          </div>
+          <div class="time-container">
+            <img src="img/icons/racing_flag.svg" alt="Flag Icon" class="flag-icon">
+            <span class="time-text">{{ this.getFormatTime(this.globalTime)  }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Conteneur Statistiques -->
+      <div class="stats-container">
+        <div class="header-profile">
+          <h2>Statistiques</h2>
+        </div>
+        <!-- Contenu des statistiques ici -->
+        <div class="statistics-content">
+            <div class="stats-row">
+              <div class="stat-item">
+                <div class="icon-container">
+                  <img src="img/icons/jump.svg" alt="Running Icon" class="w-[5rem] h-[5rem]" />
+                  <span class="top-10 right-0 stat-number">#{{ this.getRank(this.jumpRank.rank)  }}</span>
+                </div>
+                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.JUMP)  }}</span>
+              </div>
+              <div class="stat-item">
+                <div class="icon-container">
+                  <img src="img/icons/castle.svg" alt="Castle Icon" class="w-[4rem] h-[4rem]" />
+                  <span class="top-16 right-9 stat-number">#{{ this.getRank(this.dungeonRank.rank)  }}</span>
+                </div>
+                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.DUNGEON)  }}</span>
+              </div>
+              <div class="stat-item">
+                <div class="icon-container">
+                  <img src="img/icons/boat.svg" alt="Boat Icon" class="w-full" />
+                  <span class="top-14 right-8 stat-number">#{{ this.getRank(this.boatRank.rank)  }}</span>
+                </div>
+                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.BOAT_RACE)  }}</span>
+              </div>
+            </div>
+          
+            <!-- <hr class="divider" /> -->
+            <div class="divider">
+            </div>
+          
+            <div class="stats-row">
+              <div class="stat-item">
+                <div class="icon-container">
+                  <img src="img/icons/horse.svg" alt="Horse Icon" class="w-[5rem] h-[5rem]" />
+                  <span class="top-6 right-16 stat-number">#{{ this.getRank(this.hippodromeRank.rank)  }}</span>
+                </div>
+                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.HIPPODROME)  }}</span>
+              </div>
+              <div class="stat-item">
+                <div class="icon-container">
+                  <img src="img/icons/wings.svg" alt="Wings Icon" class="w-full" />
+                  <span class="top-14 right-9 stat-number">#{{ this.getRank(this.elytraRank.rank)  }}</span>
+                </div>
+                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.ELYTRA)  }}</span>
+              </div>
+              <div class="stat-item">
+                <div class="icon-container">
+                  <img src="img/icons/pickaxe.svg" alt="Pickaxe Icon" class="w-[3.5rem] h-[3.5rem]" />
+                  <span class="top-14 right-9 stat-number">#{{ this.getRank(this.minageRank.rank)  }}</span>
+                </div>
+                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.MINAGE)  }}</span>
+              </div>
+            </div>
+          
+            <!-- <hr class="divider" /> -->
+            <div class="divider">
+            </div>
+          
+            <div class="stats-row">
+              <div class="stat-item">
+                <div class="icon-container">
+                  <img src="img/icons/broken_heart.svg" alt="Heart Icon" class="w-[3.5rem] h-[3.5rem]" />
+                  <span class="top-14 right-11 stat-number">#{{ this.getRank(this.oneHeartRank.rank)  }}</span>
+                </div>
+                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.ONE_HEART)  }}</span>
+              </div>
+            </div>
+          </div>          
+          
+      </div>
+    </div>
+  
+    <!-- Section contenant Live en dessous -->
+    <div class="bottom-section">
+      <!-- Conteneur Live -->
+      <!-- <div class="live-container">
+        <div class="header-profile">
+          <h2>Live</h2>
+        </div>
+        <div class="twitch-stream-container">
+            <iframe
+              [src]="sanitizeUrl('Nagatow')"
+              frameborder="0"
+              scrolling="no"
+              allowfullscreen="true">
+            </iframe>
+          </div>
+      </div> -->
+    </div>
+  </div>
+  

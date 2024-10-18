@@ -1,0 +1,128 @@
+<section id="competitions-event" class="competitions-event-section">
+    <div class="container-event">      
+      <!-- Épreuve Jump -->
+      <div class="epreuve" id="jump">
+        <div class="epreuve-content">
+          <div class="epreuve-video">
+            <iframe [src]="this.videoJumpUrl" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+            <button class="btn-next-epreuve" (click)="this.scrollToNext('#donjon')">
+                Prochaine épreuve <img src="img/icons/arrow_special.svg" alt="Arrow Icon">
+              </button>
+          </div>
+          <div class="epreuve-details">
+            <h3>JUMP <img src="img/icons/jump.svg" alt="Jump Icon"></h3>
+            <p>Le Jump est l’une des disciplines les plus skillées de Minecraft.</p>
+            <p>Cette course intégrera <strong>12 checkpoints</strong>. La particularité, pour permettre à tous de progresser dans ce jump, est le système de <strong>Hardway / Safeway</strong>.</p>
+            <p>En effet, plusieurs chemins sont disponibles tout au long de la course, vous pourrez essayer chaque chemin et trouver lequel vous convient le mieux. La hardway est certe, plus rapide, mais beaucoup plus compliqué, donc faites votre choix !</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Épreuve Donjon -->
+      <div class="epreuve bg-epreuve" id="donjon">
+        <div class="epreuve-content">
+          <div class="epreuve-details">
+            <h3>DONJON <img src="img/icons/castle.svg" alt="Donjon Icon"></h3>
+            <p>Le Donjon est l’épreuve <strong>la plus longue</strong> de la Nagacup, vous devrez traverser une ville, un château et une plaine infestée de monstres. Après chaque <strong>vague de monstres vaincus</strong>, vous serez <strong>régénéré et vous débloquerez l’accès à la zone suivante</strong>.</p>
+            <p>Particularité très spéciale pour cette épreuve, <strong>4 kits</strong> seront disponibles <strong>à chaque début de manches</strong>, vous devrez donc trouver quel kit sera le plus adapté pour les différentes manches.</p>
+            <p>Dès que vous mourrez, vous ressuscitez sur place au bout de 10 secondes avec quelques secondes d'invincibilité.</p>
+          </div>
+          <div class="epreuve-video">
+            <iframe [src]="this.videoDonjonUrl" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+            <button class="btn-next-epreuve" (click)="this.scrollToNext('#hippodrome')">
+                Prochaine épreuve <img src="img/icons/arrow_special.svg" alt="Arrow Icon">
+              </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Épreuve Hippodrome -->
+      <div class="epreuve" id="hippodrome">
+        <div class="epreuve-content">
+          <div class="epreuve-video">
+            <iframe [src]="this.videoHippoUrl" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+            <button class="btn-next-epreuve" (click)="this.scrollToNext('#boat')">
+                Prochaine épreuve <img src="img/icons/arrow_special.svg" alt="Arrow Icon">
+              </button>
+          </div>
+          <div class="epreuve-details">
+            <h3>HIPPODROME <img src="img/icons/horse.svg" alt="Hippodrome Icon"></h3>
+            <p>L’hippodrome est une course de chevaux dont l’objectif est simple : se rendre à la fin du parcours le plus rapidement possible. Vous devrez traverser <strong>une série d'obstacles variés</strong> tout au long du parcours.</p>
+            <p>Utilisez la <strong>touche sneak pour retourner au dernier checkpoint</strong> en cas de blocage, et choisissez bien votre chemin : le parcours offre des options <strong>Hardway / Safeway</strong>. La Hardway est plus rapide mais intègre des défis complexes, tandis que la Safeway est plus simple mais plus longue.</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Épreuve Bateau -->
+      <div class="epreuve bg-epreuve" id="boat">
+        <div class="epreuve-content">
+          <div class="epreuve-details">
+            <h3>BATEAU <img src="img/icons/boat.svg" alt="Boat Icon"></h3>
+            <p>Le Bateau est l’une des épreuves les plus impressionnantes et travaillée de la Nagacup ! La course se déroule dans un décor médiéval enneigé peuplé de dragons et de mystère. Un <strong>système de checkpoints</strong> est intégré, en utilisant la touche <strong>sneak</strong> et en cas de chute ou de hors piste, vous serez téléporté au dernier checkpoint.</p>
+            <p>Le parcours propose également un <strong>système de Hardway</strong> offrant des chemins plus rapides mais plus périlleux. Embarquez et montrez vos talents de navigateur des glaces sur cette épreuve qui vous réserve de nombreuses surprises.</p>
+          </div>
+          <div class="epreuve-video">
+            <iframe [src]="this.videoBoatUrl" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+            <button class="btn-next-epreuve" (click)="this.scrollToNext('#elytra')">
+                Prochaine épreuve <img src="img/icons/arrow_special.svg" alt="Arrow Icon">
+              </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Épreuve Elytra -->
+      <div class="epreuve" id="elytra">
+        <div class="epreuve-content">
+          <div class="epreuve-video">
+            <iframe [src]="this.videoElytraUrl" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+            <button class="btn-next-epreuve" (click)="this.scrollToNext('#minage')">
+                Prochaine épreuve <img src="img/icons/arrow_special.svg" alt="Arrow Icon">
+              </button>
+          </div>
+          <div class="epreuve-details">
+            <h3>ELYTRA <img src="img/icons/wings.svg" alt="Elytra Icon"></h3>
+            <p>Traversez un parcours spectaculaire entre îles et bateaux dans cette course de haute voltige. À vous de <strong>choisir entre sécurité et rapidité</strong> pour réussir ce défi dans les meilleures conditions. Deux chemins, deux niveaux de difficulté !</p>
+            <p>Votre mission ? Terminer le parcours en vol le plus rapidement possible. Chaque choc vous renverra au dernier checkpoint, la touche <strong>sneak</strong> vous permettra également de revenir à cet emplacement.</p>
+            <p>Choisissez entre deux routes : le chemin sécurisé (Safeway) pour une approche plus prudente ou le chemin difficile (Hardway) pour les pilotes aguerris. Évitez les obstacles, restez concentré, et maximisez votre temps pour décrocher la victoire. Êtes-vous prêt à défier les cieux et à faire preuve de maîtrise aérienne ?</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Épreuve Minage -->
+      <div class="epreuve bg-epreuve" id="minage">
+        <div class="epreuve-content">
+          <!-- <img src="path/to/donjon_image.jpg" alt="Donjon Image" class="epreuve-image"> -->
+          <div class="epreuve-details">
+            <h3>MINAGE <img src="img/icons/pickaxe.svg" alt="Minage Icon"></h3>
+            <p>Le Minage dans la Nagacup est bien plus qu'une simple casse de blocs. Votre objectif ? <strong>Miner les blocs dans l’ordre indiqué via la touche TAB</strong>. Mais attention : l’ordre et les blocs à miner changent à chaque essai, rendant chaque tentative complètement unique.</p>
+            <p>Explorez les recoins du château pour repérer les blocs nécessaires à votre mission. En mode compétition, tous les joueurs auront le même paterne, donc <strong>votre mémoire et votre vitesse</strong> seront des atouts cruciaux.</p>
+          </div>
+          <div class="epreuve-video">
+            <iframe [src]="this.videoMinageUrl" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+            <button class="btn-next-epreuve" (click)="this.scrollToNext('#oneheart')">
+                Prochaine épreuve <img src="img/icons/arrow_special.svg" alt="Arrow Icon">
+              </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Épreuve OneHeart -->
+      <div class="epreuve" id="oneheart">
+        <div class="epreuve-content">
+          <div class="epreuve-video">
+            <iframe [src]="this.videoOneHeartUrl" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="epreuve-details">
+            <h3>ONE HEART <img src="img/icons/broken_heart.svg" alt="OneHeart Icon"></h3>
+            <p>L’heure du verdict est arrivée avec le OneHeart, l’épreuve ultime de la Nagacup. Votre mission ? Accomplir trois objectifs cruciaux pour débloquer l’accès à l’arbre-cœur. Avec <strong>un seul demi-cœur</strong> à votre disposition, chaque erreur pourrait vous être fatale.</p>
+            <p>À chaque échec, vous serez téléporté au dernier checkpoint, mais attention : <strong>chaque mort vous coûtera un temps précieux</strong>. Le parcours offre plusieurs chemins, des passages plus sûrs (Safeway) pour ceux qui préfèrent la prudence, et des raccourcis risqués (Hardway) pour les audacieux.</p>
+            <p>Serez-vous celui ou celle qui réussira à relever ce dernier défi et à conquérir le trône de fer ? Le grand moment est venu.</p>
+          </div>
+        </div>
+      </div>
+
+
+      
+    </div>
+  </section>
+  
