@@ -80,9 +80,9 @@
           }" class="td-text">{{ this.getFormatTime(item.phaseTimes.ONE_HEART) }}</td>
           <td class="td-text">
             <span [ngClass]="{
-              'opacity-60': this.getFormatTime(item.totalTime) === '//'
+              'opacity-60': this.getFormatTime(item.totalTime) === '//' && (!item.currentTotalTime || item.currentTotalTime < 0) 
             }" *ngIf="selectedMode === this.gameSettings.STREAMER_ROUND1 || selectedMode === gameSettings.STREAMER_ROUND2 || selectedMode === this.gameSettings.STREAMER_ROUND3">
-              {{ this.getFormatTime(item.totalTime) }}
+              {{ item.currentTotalTime && item.currentTotalTime > 0 ? this.getFormatTime(item.currentTotalTime) : this.getFormatTime(item.totalTime) }}
             </span>
           
             <span *ngIf="selectedMode === this.gameSettings.MODE_GLOBAL">

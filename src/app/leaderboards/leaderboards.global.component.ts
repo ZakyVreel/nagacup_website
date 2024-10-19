@@ -3,7 +3,7 @@ import { RouterModule } from "@angular/router";
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { GameSettings } from "../model/game.settings";
 import { ApiService } from "../model/apiservice";
-import { formatTime } from "../model/utils";
+import { formatTime, formatTimeWithMilliseconds } from "../model/utils";
 import { PaginationService } from "../model/pagination.service";
 
 @Component({
@@ -108,7 +108,7 @@ export class LeaderboardsGlobalComponent {
         }
     
         getFormatTime(time: any) {
-          return time > 0 ? formatTime(time) : '//';
+          return time > 0 ? formatTimeWithMilliseconds(time) : '//';
         }
 
         getDetailedData(): void {
