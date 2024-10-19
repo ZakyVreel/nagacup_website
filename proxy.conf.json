@@ -1,0 +1,11 @@
+{
+    "/mojang-api": {
+      "target": "https://api.mojang.com",
+      "secure": true,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/mojang-api": ""
+      }
+    }
+  }
+  

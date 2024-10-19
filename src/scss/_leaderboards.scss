@@ -29,52 +29,52 @@ $radius-row: 0.7rem;
 }
 
 .table {
-  border-collapse: separate;
-  border-spacing: 0 10px;
-  width: 85%;
-  margin: 0 auto;
+  // border-collapse: separate;
+  // border-spacing: 0 10px;
+  // width: 85%;
+  // margin: 0 auto;
 
-  td:nth-child(1),
-  th:nth-child(1) {
-    padding-left: 2rem;
-  }
+  // td:nth-child(1),
+  // th:nth-child(1) {
+  //   padding-left: 2rem;
+  // }
 
-  td:nth-child(2),
-  th:nth-child(2) {
-    padding-left: 0.5rem;
-    padding-right: 0;
-  }
+  // td:nth-child(2),
+  // th:nth-child(2) {
+  //   padding-left: 0.5rem;
+  //   padding-right: 0;
+  // }
   
-  td:nth-child(3),
-  th:nth-child(3) {
-    padding-right: 2rem;
-    padding-left: 0rem;
-  }
+  // td:nth-child(3),
+  // th:nth-child(3) {
+  //   padding-right: 2rem;
+  //   padding-left: 0rem;
+  // }
   
-  td:nth-child(4),
-  td:nth-child(5),
-  td:nth-child(6),
-  td:nth-child(7),
-  td:nth-child(8),
-  th:nth-child(4),
-  th:nth-child(5),
-  th:nth-child(6),
-  th:nth-child(7),
-  th:nth-child(8),
-  td:nth-child(9),
-  th:nth-child(9) {
-    padding-right: 0.5rem;
-  }
+  // td:nth-child(4),
+  // td:nth-child(5),
+  // td:nth-child(6),
+  // td:nth-child(7),
+  // td:nth-child(8),
+  // th:nth-child(4),
+  // th:nth-child(5),
+  // th:nth-child(6),
+  // th:nth-child(7),
+  // th:nth-child(8),
+  // td:nth-child(9),
+  // th:nth-child(9) {
+  //   padding-right: 0.5rem;
+  // }
   
-  td:nth-child(10),
-  th:nth-child(10) {
-    padding-right: 3rem;
-  }
+  // td:nth-child(10),
+  // th:nth-child(10) {
+  //   padding-right: 3rem;
+  // }
 
-  td:nth-child(11),
-  th:nth-child(11) {
-    padding-right: 1rem;
-  }
+  // td:nth-child(11),
+  // th:nth-child(11) {
+  //   padding-right: 1rem;
+  // }
 
   td:first-child {
     border-top-left-radius: $radius-row;
@@ -297,8 +297,34 @@ $radius-row: 0.7rem;
   font-family: 'Poppins', sans-serif;
   font-size: 65px;
   font-weight: 700;
-  color: #FFD700;
-  text-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+  color: #ffffff;
+  text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
+}
+
+.rank-gold {
+  color: #FFD700 !important; /* Couleur Or pour le rang 1 */
+  text-shadow: 0px 0px 15px #FFD700 !important;
+}
+
+.rank-silver {
+  color: #C0C0C0 !important; /* Couleur Argent pour le rang 2 */
+  text-shadow: 0px 0px 15px #C0C0C0 !important;
+}
+
+.rank-bronze {
+  color: #CD7F32 !important; /* Couleur Bronze pour le rang 3 */
+  text-shadow: 0px 0px 15px #CD7F32 !important;
+}
+
+.rank-default {
+  color: #FFFFFF; /* Couleur par défaut (Blanc) */
+  text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8)
+}
+
+.rank-NA {
+  color: #FFFFFF; /* Couleur par défaut (Blanc) */
+  text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+  opacity: 0.6;
 }
 
 .time-container {

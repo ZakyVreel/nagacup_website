@@ -112,5 +112,24 @@ export class ApiService {
     }
 
 
+    // {
+    //   "id": "4566e69fc90748ee8d71d7ba5aa00d20",
+    //   "name": "playername"
+    // }
+    getUUIDByUsername(username: any): Observable<any> {
+      return this.http.get(`/mojang-api/users/profiles/minecraft/${username}`);
+     // return this.http.get(`https://api.mojang.com/users/profiles/minecraft/${username}`);
+    }
+
+  //   [
+  //     {"name": "OldName"},
+  //     {"name": "NewName"}
+  // ]
+    getUsernameByUUID(uuid: any): Observable<any> {
+      return this.http.get(`/mojang-ap/users/profiles/${uuid}/names`);
+      //return this.http.get(`https://api.mojang.com/users/profiles/${uuid}/names`);
+    }
+
+
 
 }

@@ -8,3 +8,22 @@
 body {
    background-color: $bg-color;
 }
+
+.empty-data-message {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh; /* Prend toute la hauteur de la page */
+   font-family: 'Poppins', sans-serif; /* Utilise la police Poppins */
+   font-size: 1.5rem;
+   color: #ffffff; /* Texte blanc */
+   text-align: center; /* Centrer le texte */
+ }
+
+ .loading-spinner {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 60vh; 
+   color: #ffffff; /* Texte blanc */
+}

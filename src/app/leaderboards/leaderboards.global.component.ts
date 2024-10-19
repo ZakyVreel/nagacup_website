@@ -21,6 +21,8 @@ export class LeaderboardsGlobalComponent {
     totalPages: number = 0;
     gameSettings = GameSettings;
 
+    isLoading: boolean = false;
+
     constructor(private apiService: ApiService, private paginationService: PaginationService) {}
 
     ngOnInit(): void {
@@ -36,6 +38,7 @@ export class LeaderboardsGlobalComponent {
       }
 
     fetchLeaderboardData(): void {
+        this.isLoading = true;
         let chosenPhase: string;
           const observer = {
             next: (response: any) => {
@@ -46,9 +49,11 @@ export class LeaderboardsGlobalComponent {
             },
             error: (error: any) => {
               console.error('Erreur lors de la récupération des données :', error);
+              this.isLoading = false;
             },
             complete: () => {
               console.log('Appel API terminé');
+              this.isLoading = false;
             }
           };
           console.log(this.selectedMode);

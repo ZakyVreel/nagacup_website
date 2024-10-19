@@ -1,19 +1,21 @@
-<div class="main-container-profile">
+<div *ngIf="!isLoading" class="main-container-profile">
     <!-- Section contenant Profil et Statistiques alignés horizontalement -->
     <div class="top-section">
       <!-- Conteneur Profil -->
       <div class="profile-container">
         <div class="header-profile">
-          <h2>{{ this.username }}</h2>
+          <h2 [ngClass]="this.getRankClass(this.getRank(this.globalRank.rank))">{{ this.username === 'Nardco' ? 'ZakyVreel 😈 #Boycott' : this.username }}</h2>
         </div>
         <div class="avatar-section">
           <div class="avatar-container">
             <img src="https://visage.surgeplay.com/full/512/{{ this.uuid }}" alt="Avatar" class="avatar-image">
-            <span class="rank-number">#{{ this.getRank(this.globalRank.rank)  }}</span>
+            <span [ngClass]="this.getRankClass(this.getRank(this.globalRank.rank))" class="rank-number">#{{ this.getRank(this.globalRank.rank)  }}</span>
           </div>
           <div class="time-container">
             <img src="img/icons/racing_flag.svg" alt="Flag Icon" class="flag-icon">
-            <span class="time-text">{{ this.getFormatTime(this.globalTime)  }}</span>
+            <span [ngClass]="{
+              'opacity-60': this.getFormatTime(this.globalTime) === '//'
+            }" class="time-text">{{ this.getFormatTime(this.globalTime)  }}</span>
           </div>
         </div>
       </div>
@@ -29,23 +31,29 @@
               <div class="stat-item">
                 <div class="icon-container">
                   <img src="img/icons/jump.svg" alt="Running Icon" class="w-[5rem] h-[5rem]" />
-                  <span class="top-10 right-0 stat-number">#{{ this.getRank(this.jumpRank.rank)  }}</span>
+                  <span [ngClass]="this.getRankClass(this.getRank(this.jumpRank.rank))" class="top-10 right-0 stat-number">#{{ this.getRank(this.jumpRank.rank)  }}</span>
                 </div>
-                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.JUMP)  }}</span>
+                <span [ngClass]="{
+                  'opacity-60': this.getFormatTime(this.phasesTimes.JUMP) === '//'
+                }" class="stat-time">{{ this.getFormatTime(this.phasesTimes.JUMP)  }}</span>
               </div>
               <div class="stat-item">
                 <div class="icon-container">
                   <img src="img/icons/castle.svg" alt="Castle Icon" class="w-[4rem] h-[4rem]" />
-                  <span class="top-16 right-9 stat-number">#{{ this.getRank(this.dungeonRank.rank)  }}</span>
+                  <span [ngClass]="this.getRankClass(this.getRank(this.dungeonRank.rank))" class="top-16 right-9 stat-number">#{{ this.getRank(this.dungeonRank.rank)  }}</span>
                 </div>
-                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.DUNGEON)  }}</span>
+                <span [ngClass]="{
+                  'opacity-60': this.getFormatTime(this.phasesTimes.DUNGEON) === '//'
+                }" class="stat-time">{{ this.getFormatTime(this.phasesTimes.DUNGEON)  }}</span>
               </div>
               <div class="stat-item">
                 <div class="icon-container">
                   <img src="img/icons/boat.svg" alt="Boat Icon" class="w-full" />
-                  <span class="top-14 right-8 stat-number">#{{ this.getRank(this.boatRank.rank)  }}</span>
+                  <span [ngClass]="this.getRankClass(this.getRank(this.boatRank.rank))" class="top-14 right-8 stat-number">#{{ this.getRank(this.boatRank.rank)  }}</span>
                 </div>
-                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.BOAT_RACE)  }}</span>
+                <span [ngClass]="{
+                  'opacity-60': this.getFormatTime(this.phasesTimes.BOAT_RACE) === '//'
+                }" class="stat-time">{{ this.getFormatTime(this.phasesTimes.BOAT_RACE)  }}</span>
               </div>
             </div>
           
@@ -57,23 +65,29 @@
               <div class="stat-item">
                 <div class="icon-container">
                   <img src="img/icons/horse.svg" alt="Horse Icon" class="w-[5rem] h-[5rem]" />
-                  <span class="top-6 right-16 stat-number">#{{ this.getRank(this.hippodromeRank.rank)  }}</span>
+                  <span [ngClass]="this.getRankClass(this.getRank(this.hippodromeRank.rank))" class="top-6 right-16 stat-number">#{{ this.getRank(this.hippodromeRank.rank)  }}</span>
                 </div>
-                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.HIPPODROME)  }}</span>
+                <span [ngClass]="{
+                  'opacity-60': this.getFormatTime(this.phasesTimes.HIPPODROME) === '//'
+                }" class="stat-time">{{ this.getFormatTime(this.phasesTimes.HIPPODROME)  }}</span>
               </div>
               <div class="stat-item">
                 <div class="icon-container">
                   <img src="img/icons/wings.svg" alt="Wings Icon" class="w-full" />
-                  <span class="top-14 right-9 stat-number">#{{ this.getRank(this.elytraRank.rank)  }}</span>
+                  <span [ngClass]="this.getRankClass(this.getRank(this.elytraRank.rank))" class="top-14 right-9 stat-number">#{{ this.getRank(this.elytraRank.rank)  }}</span>
                 </div>
-                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.ELYTRA)  }}</span>
+                <span [ngClass]="{
+                  'opacity-60': this.getFormatTime(this.phasesTimes.ELYTRA) === '//'
+                }" class="stat-time">{{ this.getFormatTime(this.phasesTimes.ELYTRA)  }}</span>
               </div>
               <div class="stat-item">
                 <div class="icon-container">
                   <img src="img/icons/pickaxe.svg" alt="Pickaxe Icon" class="w-[3.5rem] h-[3.5rem]" />
-                  <span class="top-14 right-9 stat-number">#{{ this.getRank(this.minageRank.rank)  }}</span>
+                  <span [ngClass]="this.getRankClass(this.getRank(this.minageRank.rank))" class="top-14 right-9 stat-number">#{{ this.getRank(this.minageRank.rank)  }}</span>
                 </div>
-                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.MINAGE)  }}</span>
+                <span [ngClass]="{
+                  'opacity-60': this.getFormatTime(this.phasesTimes.MINAGE) === '//'
+                }" class="stat-time">{{ this.getFormatTime(this.phasesTimes.MINAGE)  }}</span>
               </div>
             </div>
           
@@ -85,9 +99,11 @@
               <div class="stat-item">
                 <div class="icon-container">
                   <img src="img/icons/broken_heart.svg" alt="Heart Icon" class="w-[3.5rem] h-[3.5rem]" />
-                  <span class="top-14 right-11 stat-number">#{{ this.getRank(this.oneHeartRank.rank)  }}</span>
+                  <span [ngClass]="this.getRankClass(this.getRank(this.oneHeartRank.rank))" class="top-14 right-11 stat-number">#{{ this.getRank(this.oneHeartRank.rank)  }}</span>
                 </div>
-                <span class="stat-time">{{ this.getFormatTime(this.phasesTimes.ONE_HEART)  }}</span>
+                <span [ngClass]="{
+                  'opacity-60': this.getFormatTime(this.phasesTimes.ONE_HEART) === '//'
+                }" class="stat-time">{{ this.getFormatTime(this.phasesTimes.ONE_HEART)  }}</span>
               </div>
             </div>
           </div>          
@@ -112,5 +128,14 @@
           </div>
       </div> -->
     </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-spinner">
+    <svg class="animate-spin h-16 w-16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="white"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+      </path>
+  </svg>
   </div>
   
