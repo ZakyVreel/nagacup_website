@@ -4,6 +4,7 @@
 @use './_dropdowntitle' as *;
 @use './_home' as *;
 @use './_rules' as *;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
    background-color: $bg-color;
@@ -12,6 +13,7 @@ body {
 .empty-data-message {
    display: flex;
    justify-content: center;
+   font-family: 'Poppins';
    align-items: center;
    height: 100vh; /* Prend toute la hauteur de la page */
    font-family: 'Poppins', sans-serif; /* Utilise la police Poppins */
