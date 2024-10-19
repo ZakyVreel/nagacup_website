@@ -90,15 +90,15 @@ export class ApiService {
             map(({ round1, round2, round3 }) => {
             // Ajouter la position dans chaque round pour chaque joueur
             return players.map((player: any) => {
-                const round1Position = this.getPlayerPosition(player.uuid, round1);
-                const round2Position = this.getPlayerPosition(player.uuid, round2);
-                const round3Position = this.getPlayerPosition(player.uuid, round3);
+                const round1Points = this.getPointsByPositon(this.getPlayerPosition(player.uuid, round1));
+                const round2Points = this.getPointsByPositon(this.getPlayerPosition(player.uuid, round2));
+                const round3Points = this.getPointsByPositon(this.getPlayerPosition(player.uuid, round3));
 
                 return {
                 ...player,
-                round1: round1Position,
-                round2: round2Position,
-                round3: round3Position
+                round1: round1Points,
+                round2: round2Points,
+                round3: round3Points
                 };
             });
             })
@@ -109,6 +109,34 @@ export class ApiService {
     getPlayerPosition(uuid: string, leaderboard: any[]): number {
         const index = leaderboard.findIndex(player => player.uuid === uuid);
         return index !== -1 ? index + 1 : -1;
+    }
+
+    getPointsByPositon(pos: any) {
+      if (pos === 1) {
+        return 1;
+      } else if (pos >= 2 && pos <= 3) {
+        return 2;
+      } else if (pos >= 4 && pos <= 6) {
+        return 3;
+      } else if (pos >= 7 && pos <= 10) {
+        return 4;
+      } else if (pos >= 11 && pos <= 15) {
+        return 5;
+      } else if (pos >= 16 && pos <= 20) {
+        return 6;
+      } else if (pos >= 21 && pos <= 25) {
+        return 7;
+      } else if (pos >= 26 && pos <= 30) {
+        return 8;
+      } else if (pos >= 31 && pos <= 35) {
+        return 9;
+      } else if (pos >= 36 && pos <= 40) {
+        return 10;
+      } else if (pos >= 41) {
+        return 11;
+      }
+    
+      return -1;
     }
 
 

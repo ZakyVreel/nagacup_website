@@ -114,6 +114,10 @@ export class LeaderboardsTotalComponent {
                 this.apiService.getPlayersTotalDetails(this.paginatedData).subscribe(observer);
               }
           }
+
+          getPoints(points: any) {
+            return points && points > 0 ? points : 'NA';
+          }
   
 
 }
