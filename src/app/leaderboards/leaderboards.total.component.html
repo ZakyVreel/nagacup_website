@@ -50,17 +50,17 @@
           </td>
           <td [ngClass]="{
             'opacity-60': item.round1 === 'NA'
-          }" class="td-text">{{ item.round1 ? item.round1 : 'NA' }}</td>
+          }" class="td-text">{{ item.round1 && item.round1 > 0 ? item.round1 : 'NA' }}</td>
           <td [ngClass]="{
             'opacity-60': item.round2 === 'NA'
-          }" class="td-text">{{ item.round2 ? item.round2 : 'NA' }}</td>
+          }" class="td-text">{{ item.round2 && item.round2 > 0 ? item.round2 : 'NA' }}</td>
           <td [ngClass]="{
             'opacity-60': item.round3 === 'NA'
-          }" class="td-text">{{ item.round3 ? item.round3 : 'NA' }}</td>
+          }" class="td-text">{{ item.round3 && item.round3 > 0 ? item.round3 : 'NA' }}</td>
           <td  class="td-text">
             <img src="img/icons/arrow.svg" alt="Arrow" class="icon-medium icon-center" />
           </td>
-          <td class="td-text">{{ item.points ? item.points : 'NA' }}</td>
+          <td class="td-text">{{ item.points && item.points > 0 ? item.points : 'NA' }}</td>
         </tr>
       </tbody>
     </table>
