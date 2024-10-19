@@ -15,15 +15,15 @@ body {
 
 @font-face {
   font-family: 'Minecraftia';
-  src: url('./assets/fonts/Minecraftia-Regular.ttf') format('truetype');
-  font-weight: normal; /* Définis le poids normal */
-  font-style: normal;   /* Style normal (pas italique) */
+  src: url('../public/fonts/Minecraftia-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal; 
 }
 
 
 @font-face {
   font-family: 'VCR';
-  src: url('./assets/fonts/VCRosdNEUE.ttf') format('truetype');
-  font-weight: normal; /* Définis le poids normal */
-  font-style: normal;   /* Style normal (pas italique) */
+  src: url('../public/fonts/VCRosdNEUE.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }

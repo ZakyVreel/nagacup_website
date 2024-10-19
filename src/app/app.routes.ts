@@ -9,7 +9,7 @@ import { RulesEventsComponent } from './rules/rules.events.component';
 import { RulesCompetitionsComponent } from './rules/rules.competitions.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirige vers la page d'accueil
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'leaderboards', component: LeaderboardsMenuComponent },
     { path: 'leaderboards/global', component: LeaderboardsComponent },
@@ -24,5 +24,5 @@ export const routes: Routes = [
       ]
     },
     { path: 'leaderboards/profile/:uuid/:username', component: LeaderboardsProfileComponent },
-    { path: '**', redirectTo: 'home' }, // Redirection par défaut si la route n'existe pas
+    { path: '**', redirectTo: 'home' },
   ];
