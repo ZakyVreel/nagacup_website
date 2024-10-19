@@ -45,10 +45,55 @@
 </section>
 
 <div class="popup-container" *ngIf="isPopupVisible">
-  <div class="popup-content">
-    <!-- Bouton croix positionné en haut à droite -->
-    <button class="close-button" (click)="closePopup()"><img src="img/icons/close.svg" alt="close" class="close-image"></button>
-    <h2>Êtes-vous prêt à jouer ?</h2>
+  <section class="popup-content">
+      <button class="close-button" (click)="closePopup()">
+          <img src="img/icons/close.svg" alt="close" class="close-image">
+      </button>
+
+      <!-- Titre principal -->
+      <h2 class="popup-title">
+          COMMENT S'INSCRIRE ?
+      </h2>
+
+      <div class="popup-body">
+          <!-- Image de Discord -->
+          <div class="popup-image">
+              <img src="img/screens/discord_screen.png" alt="Discord Screenshot">
+          </div>
+
+          <!-- Étapes pour rejoindre -->
+          <div class="popup-steps">
+              <!-- Étape 1 -->
+              <div class="step">
+                  <div class="step-number step-1">1</div>
+                  <p class="step-text">
+                      Rejoignez notre serveur Discord en cliquant sur le lien suivant :
+                      <a href="https://discord.gg/euecweumdw" target="_blank" class="text-blue">discord.gg/nagacup</a>
+                  </p>
+              </div>
+
+              <!-- Étape 2 -->
+              <div class="step">
+                  <div class="step-number step-2">2</div>
+                  <p class="step-text">
+                      Une fois sur le serveur, rendez-vous dans le channel <strong># 📝 | pseudo-minecraft</strong> et inscrivez votre pseudo pour participer !
+                  </p>
+              </div>
+
+              <!-- Étape 3 -->
+              <div class="step">
+                  <div class="step-number step-3">3</div>
+                  <p class="step-text">
+                      Vous êtes prêt ! Vous serez automatiquement inscrit une fois votre pseudo validé dans le channel.
+                  </p>
+              </div>
+          </div>
+      </div>
+  </section>
+</div>
+
+
+    <!-- <h2>Êtes-vous prêt à jouer ?</h2>
     <p>Il vous suffit de rejoindre le discord ci-dessous le discord et de mettre votre pseudo dans le channel Pseudo</p>
 
 
@@ -70,6 +115,4 @@
           <span class="text-white hover:text-gray-800">Nagacup</span>
   
       </button>
-  </div>
-  </div>
-</div>
+  </div> -->

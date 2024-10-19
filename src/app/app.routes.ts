@@ -23,6 +23,6 @@ export const routes: Routes = [
         { path: '', redirectTo: 'competitions', pathMatch: 'full' },
       ]
     },
-    { path: 'leaderboards/profile/:uuid/:username', component: LeaderboardsProfileComponent },
+    { path: 'leaderboards/profile/:username', component: LeaderboardsProfileComponent },
     { path: '**', redirectTo: 'home' },
   ];

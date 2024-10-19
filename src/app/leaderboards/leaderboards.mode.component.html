@@ -1,4 +1,4 @@
-<div class="table-container">
+<div *ngIf="!isLoading && paginatedData?.length" class="table-container">
     <table class="table">
       <!-- En-tête du tableau avec position sticky -->
       <thead>
@@ -23,20 +23,41 @@
             'td-pseudo': this.getPosition(i) > 3
           }">{{ this.getPosition(i) }}</td>
           <td class="td-avatar td-text">
-            <a [routerLink]="['/leaderboards/profile', item.uuid, item.username]">
+            <a [routerLink]="['/leaderboards/profile', item.username]">
               <img src="https://minotar.net/avatar/{{ item.username }}/50.png" alt="ZakyVreel Avatar" class="h-10 w-10" />
             </a>
           </td>
-          <td class="td-pseudo">
-            <a [routerLink]="['/leaderboards/profile', item.uuid, item.username]">
+          <td [ngClass]="{
+            'td-text-gold': this.getPosition(i) === 1,
+            'td-text-iron': this.getPosition(i) === 2,
+            'td-text-bronze': this.getPosition(i) === 3,
+            'td-pseudo': this.getPosition(i) > 3
+          }" class="td-pseudo">
+            <a [routerLink]="['/leaderboards/profile', item.username]">
               <span>{{ item.username }}</span>
             </a>
           </td>
-          <td class="td-text">{{ this.getFormatTime(item.time) }}</td>
+          <td [ngClass]="{
+            'opacity-60': this.getFormatTime(item.time) === '//'
+          }" class="td-text">{{ this.getFormatTime(item.time) }}</td>
         </tr>
       </tbody>
     </table>
   </div>
+
+  <div *ngIf="!isLoading && !paginatedData?.length" class="empty-data-message">
+    <p class="text-white">Pas de données disponibles, le bide...</p>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-spinner">
+    <svg class="animate-spin h-16 w-16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="white"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+      </path>
+  </svg>
+  </div>
+  
 
   <div class="flex justify-center items-center mt-4 pb-4">
     <button *ngIf="this.currentPage !== 1" class="px-2 py-2 button-page rounded-lg" (click)="this.previousPage()">
@@ -50,3 +71,30 @@
       </svg>
     </button>
   </div>
+
+  <style>
+    .table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  width: 50%;
+  margin: 0 auto;
+
+  td:nth-child(1),
+  th:nth-child(1) {
+    padding-left: 2rem;
+  }
+
+  td:nth-child(2),
+  th:nth-child(2) {
+    padding-left: 0rem;
+    padding-right: 0;
+  }
+  
+  td:nth-child(3),
+  th:nth-child(3) {
+    padding-right: 5rem;
+    padding-left: 1rem;
+  }
+  
+}
+  </style>

@@ -22,6 +22,8 @@ export class LeaderboardsModeComponent implements OnInit, OnChanges {
     currentPage: number = 1;
     totalPages: number = 0;
 
+    isLoading: boolean = false;
+
     constructor(private apiService: ApiService, private paginationService: PaginationService) {}
 
     ngOnInit(): void {
@@ -39,6 +41,7 @@ export class LeaderboardsModeComponent implements OnInit, OnChanges {
   
 
   fetchLeaderboardData(): void {
+    this.isLoading = true;
     let chosenPhase: string;
       const observer = {
         next: (response: any) => {
@@ -49,9 +52,11 @@ export class LeaderboardsModeComponent implements OnInit, OnChanges {
         },
         error: (error: any) => {
           console.error('Erreur lors de la récupération des données :', error);
+          this.isLoading = false;
         },
         complete: () => {
           console.log('Appel API terminé');
+          this.isLoading = false;
         }
       };
       switch (this.selectedMode) {

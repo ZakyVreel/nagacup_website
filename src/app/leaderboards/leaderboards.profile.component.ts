@@ -1,15 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, RouterModule } from "@angular/router";
-import { NgFor, NgIf } from '@angular/common';
+import { Location, NgClass, NgFor, NgIf } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { ApiService } from "../model/apiservice";
-import { forkJoin } from "rxjs";
-import { formatTime } from "../model/utils";
+import { catchError, forkJoin, of } from "rxjs";
+import { formatTime, formatUUID } from "../model/utils";
 
 @Component({
     selector: 'app-leaderboards-profile-component',
     templateUrl: './leaderboards.profile.component.html',
-    imports: [RouterModule, NgFor, NgIf],
+    imports: [RouterModule, NgFor, NgIf, NgClass],
     standalone: true,
 })
 export class LeaderboardsProfileComponent implements OnInit {
@@ -28,55 +28,154 @@ export class LeaderboardsProfileComponent implements OnInit {
     minageRank: any;
     oneHeartRank: any;
 
-    constructor(private sanitizer: DomSanitizer, private route: ActivatedRoute, private apiService: ApiService) {}
+    usernameFinal: string = ''
+
+    isLoading: boolean = false;
+
+    constructor(private sanitizer: DomSanitizer, private route: ActivatedRoute, private apiService: ApiService, private location: Location) {}
 
     ngOnInit(): void {
-        // Récupère les paramètres de la route
         this.route.params.subscribe(params => {
-          this.uuid = params['uuid'];
           this.username = params['username'];
-          // Maintenant, tu peux utiliser l'UUID et le pseudo pour faire des appels API ou afficher les infos du joueur
-          console.log('UUID:', this.uuid, 'Username:', this.username);
+          this.verifyMinecraftAccount();
         });
-
-        this.fetchLeaderboardData();
       }
 
-      fetchLeaderboardData(): void {
-        forkJoin({
-            getGlobalTimesDetailed: this.apiService.getBestTimeByUUID(this.uuid),
-            getGlobalRank: this.apiService.getRankByUUID(this.uuid),
-            getJumpRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.JUMP),
-            getDungeonRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.DUNGEON),
-            getHippodromeRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.HIPPODROME),
-            getBoatRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.BOAT_RACE),
-            getElytraRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.ELYTRA),
-            getMinageRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.MINAGE),
-            getOneHeartRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.ONE_HEART)
-          }).subscribe({
-            next: (response) => {
-                this.phasesTimes = response.getGlobalTimesDetailed;
+      verifyMinecraftAccount() {
+        this.isLoading = true;
+        const observer = {
+          next: (response: any) => {
+            this.uuid = formatUUID(response.id);
+            console.log(this.uuid);
+            this.username = response.name;
+          },
+          error: (error: any) => {
+            console.error('Erreur lors de la récupération des données  verifyMinecraftAccount:', error);
+            this.isLoading = false;
+            this.goBack();
+          },
+          complete: () => {
+            this.fetchLeaderboardData();
+            console.log('Appel API terminé');
+          }
+        };
+          this.apiService.getUUIDByUsername(this.username).subscribe(observer);
+      }
 
-                this.globalTime = this.phasesTimes.JUMP + this.phasesTimes.DUNGEON + this.phasesTimes.BOAT_RACE + this.phasesTimes.HIPPODROME 
-                + this.phasesTimes.ELYTRA + this.phasesTimes.MINAGE + this.phasesTimes.ONE_HEART;
 
-              this.globalRank = response.getGlobalRank;
+fetchLeaderboardData(): void {
+    forkJoin({
+        getGlobalTimesDetailed: this.apiService.getBestTimeByUUID(this.uuid).pipe(
+            catchError(error => {
+                console.error('Erreur getGlobalTimesDetailed:', error);
+                return of(null); // ou une valeur par défaut
+            })
+        ),
+        getGlobalRank: this.apiService.getRankByUUID(this.uuid).pipe(
+            catchError(error => {
+                console.error('Erreur getGlobalRank:', error);
+                return of(null);
+            })
+        ),
+        getJumpRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.JUMP).pipe(
+            catchError(error => {
+                console.error('Erreur getJumpRank:', error);
+                return of(null);
+            })
+        ),
+        getDungeonRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.DUNGEON).pipe(
+            catchError(error => {
+                console.error('Erreur getDungeonRank:', error);
+                return of(null);
+            })
+        ),
+        getHippodromeRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.HIPPODROME).pipe(
+            catchError(error => {
+                console.error('Erreur getHippodromeRank:', error);
+                return of(null);
+            })
+        ),
+        getBoatRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.BOAT_RACE).pipe(
+            catchError(error => {
+                console.error('Erreur getBoatRank:', error);
+                return of(null);
+            })
+        ),
+        getElytraRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.ELYTRA).pipe(
+            catchError(error => {
+                console.error('Erreur getElytraRank:', error);
+                return of(null);
+            })
+        ),
+        getMinageRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.MINAGE).pipe(
+            catchError(error => {
+                console.error('Erreur getMinageRank:', error);
+                return of(null);
+            })
+        ),
+        getOneHeartRank: this.apiService.getPhaseRankByUUID(this.uuid, ApiService.ONE_HEART).pipe(
+            catchError(error => {
+                console.error('Erreur getOneHeartRank:', error);
+                return of(null);
+            })
+        )
+      }).subscribe({
+        next: (response) => {
+          this.phasesTimes = response.getGlobalTimesDetailed || {};  // Gérer la valeur nulle éventuelle
 
-              this.jumpRank = response.getJumpRank;
-                this.dungeonRank = response.getDungeonRank;
-                this.hippodromeRank = response.getHippodromeRank;
-                this.boatRank = response.getBoatRank;
-                this.elytraRank = response.getElytraRank;
-                this.minageRank = response.getMinageRank;
-                this.oneHeartRank = response.getOneHeartRank;
-            },
-            error: (error) => {
-              console.error('Erreur lors des appels API:', error);
-            },
-            complete: () => {
-              console.log('Tous les appels API sont terminés');
-            }
-          });
+          // Vérification que toutes les valeurs sont valides avant de calculer le globalTime
+          const validPhases = [
+            this.phasesTimes.JUMP,
+            this.phasesTimes.DUNGEON,
+            this.phasesTimes.BOAT_RACE,
+            this.phasesTimes.HIPPODROME,
+            this.phasesTimes.ELYTRA,
+            this.phasesTimes.MINAGE,
+            this.phasesTimes.ONE_HEART
+          ];
+      
+          // Si toutes les phases sont non nulles et >= 0, alors calculer le globalTime
+          if (validPhases.every(time => time !== null && time !== undefined && time >= 0)) {
+              this.globalTime = validPhases.reduce((acc, time) => acc + time, 0);
+          } else {
+              // S'il y a des valeurs incorrectes, ne pas calculer globalTime
+              this.globalTime = -1; // Ou toute autre indication
+          }
+      
+          // Autres données
+          this.globalRank = response.getGlobalRank || 'NA';
+          this.jumpRank = response.getJumpRank || 'NA';
+          this.dungeonRank = response.getDungeonRank || 'NA';
+          this.hippodromeRank = response.getHippodromeRank || 'NA';
+          this.boatRank = response.getBoatRank || 'NA';
+          this.elytraRank = response.getElytraRank || 'NA';
+          this.minageRank = response.getMinageRank || 'NA';
+          this.oneHeartRank = response.getOneHeartRank || 'NA';
+        },
+        error: (error) => {
+          console.error('Erreur lors des appels API:', error);
+          this.isLoading = false;
+        },
+        complete: () => {
+          console.log('Tous les appels API sont terminés');
+          this.isLoading = false;
+        }
+      });
+    }
+
+    getRankClass(rank: any): string {
+      if (rank === 1) {
+        return 'rank-gold'; // Classe pour le rang 1 (Or)
+      } else if (rank === 2) {
+        return 'rank-silver'; // Classe pour le rang 2 (Argent)
+      } else if (rank === 3) {
+        return 'rank-bronze'; // Classe pour le rang 3 (Bronze)
+      } else if (rank > 3) {
+        return 'rank-default'; // Classe par défaut pour les autres rangs
+      }
+      else {
+        return 'rank-NA'
+      }
     }
 
     getParentDomain(): string {
@@ -92,6 +191,10 @@ export class LeaderboardsProfileComponent implements OnInit {
         return time > 0 ? formatTime(time) : '//';
       }
       getRank(rank: any) {
-        return rank > 0 ? rank : 'NA';
+        return rank + 1 > 0 ? rank + 1 : 'NA';
+      }
+
+      goBack(): void {
+        this.location.back();
       }
 }

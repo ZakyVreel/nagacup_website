@@ -31,4 +31,14 @@ export function formatTime(ms: number): string {
   
     return result;
   }
+
+  export function formatUUID(uuid: string): string {
+    // Assurez-vous que l'UUID fait bien 32 caractères
+    if (uuid.length !== 32) {
+      throw new Error("UUID invalide, il doit contenir exactement 32 caractères.");
+    }
+  
+    // Ajouter les tirets aux positions correctes pour formater l'UUID
+    return `${uuid.slice(0, 8)}-${uuid.slice(8, 12)}-${uuid.slice(12, 16)}-${uuid.slice(16, 20)}-${uuid.slice(20)}`;
+  }
   
