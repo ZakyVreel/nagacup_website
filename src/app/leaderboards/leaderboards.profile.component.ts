@@ -46,7 +46,6 @@ export class LeaderboardsProfileComponent implements OnInit {
         const observer = {
           next: (response: any) => {
             this.uuid = formatUUID(response.id);
-            console.log(this.uuid);
             this.username = response.name;
           },
           error: (error: any) => {
@@ -179,7 +178,6 @@ fetchLeaderboardData(): void {
     }
 
     getParentDomain(): string {
-        console.log(window.location.hostname);
         return window.location.hostname;
     }
 

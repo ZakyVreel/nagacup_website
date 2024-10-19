@@ -56,7 +56,6 @@ export class LeaderboardsGlobalComponent {
               this.isLoading = false;
             }
           };
-          console.log(this.selectedMode);
           if (this.selectedMode === GameSettings.STREAMER_ROUND1 || this.selectedMode === GameSettings.STREAMER_ROUND2 || this.selectedMode === GameSettings.STREAMER_ROUND3) {
             switch (this.selectedMode) {
             case GameSettings.STREAMER_ROUND1:

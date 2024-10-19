@@ -110,7 +110,6 @@ export class LeaderboardsTotalComponent {
                   console.log('Appel API terminé');
                 }
               };
-              console.log(this.selectedMode);
               if (this.selectedMode === GameSettings.STREAMER_TOTAL) {
                 this.apiService.getPlayersTotalDetails(this.paginatedData).subscribe(observer);
               }
