@@ -164,8 +164,9 @@ $radius-row: 0.7rem;
   img {
     border-radius: 0.2rem;
     height: 35px;
-    padding-right: 2px;
+    //padding-right: 4px;
     width: 35px;
+    max-width: none;
   }
 }
 
