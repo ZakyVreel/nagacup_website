@@ -15,28 +15,28 @@ import { PaginationService } from "../model/pagination.service";
     standalone: true,
 })
 export class LeaderboardsModeComponent implements OnInit, OnChanges {
-    @Input() selectedMode: string = '';
-    leaderboardData: any[] = [];
-    paginatedData: any[] = [];
-    pageSize: number = 20;
-    currentPage: number = 1;
-    totalPages: number = 0;
+  @Input() selectedMode: string = '';
+  leaderboardData: any[] = [];
+  paginatedData: any[] = [];
+  pageSize: number = 20;
+  currentPage: number = 1;
+  totalPages: number = 0;
 
-    isLoading: boolean = false;
+  isLoading: boolean = false;
 
-    constructor(private apiService: ApiService, private paginationService: PaginationService) {}
+  constructor(private apiService: ApiService, private paginationService: PaginationService) {}
 
-    ngOnInit(): void {
+  ngOnInit(): void {
+    this.fetchLeaderboardData();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // Vérifier si `selectedMode` a changé
+    if (changes["selectedMode"] && !changes["selectedMode"].firstChange) {
+      this.currentPage = 1;
       this.fetchLeaderboardData();
     }
-
-    ngOnChanges(changes: SimpleChanges): void {
-      // Vérifier si `selectedMode` a changé
-      if (changes["selectedMode"] && !changes["selectedMode"].firstChange) {
-        this.currentPage = 1;
-        this.fetchLeaderboardData();  // Re-fetch les données à chaque changement de `selectedMode`
-      }
-    }
+  }
 
   
 
@@ -59,28 +59,27 @@ export class LeaderboardsModeComponent implements OnInit, OnChanges {
           this.isLoading = false;
         }
       };
-      switch (this.selectedMode) {
-        case GameSettings.MODE_JUMP:
-          chosenPhase = ApiService.JUMP; break;
-        case GameSettings.MODE_DONJON:
-          chosenPhase = ApiService.DUNGEON; break;
-        case GameSettings.MODE_HIPPODROME:
-          chosenPhase = ApiService.HIPPODROME; break;
-        case GameSettings.MODE_BATEAU:
-          chosenPhase = ApiService.BOAT_RACE; break;
-        case GameSettings.MODE_ELYTRA:
-          chosenPhase = ApiService.ELYTRA; break;
-        case GameSettings.MODE_MINAGE:
-          chosenPhase = ApiService.MINAGE; break;
-        case GameSettings.MODE_ONE_HEART:
-          chosenPhase = ApiService.ONE_HEART; break;
-        default:
-          chosenPhase = ApiService.JUMP;
-      }
-      this.apiService.getPhaseLeaderboardByPhase(chosenPhase).subscribe(observer);
+    switch (this.selectedMode) {
+      case GameSettings.MODE_JUMP:
+        chosenPhase = ApiService.JUMP; break;
+      case GameSettings.MODE_DONJON:
+        chosenPhase = ApiService.DUNGEON; break;
+      case GameSettings.MODE_HIPPODROME:
+        chosenPhase = ApiService.HIPPODROME; break;
+      case GameSettings.MODE_BATEAU:
+        chosenPhase = ApiService.BOAT_RACE; break;
+      case GameSettings.MODE_ELYTRA:
+        chosenPhase = ApiService.ELYTRA; break;
+      case GameSettings.MODE_MINAGE:
+        chosenPhase = ApiService.MINAGE; break;
+      case GameSettings.MODE_ONE_HEART:
+        chosenPhase = ApiService.ONE_HEART; break;
+      default:
+        chosenPhase = ApiService.JUMP;
+    }
+    this.apiService.getPhaseLeaderboardByPhase(chosenPhase).subscribe(observer);
   }
 
-    // Pagination : filtre les données à afficher en fonction de la page actuelle
   paginateData(): void {
     this.paginatedData = this.paginationService.paginate(this.leaderboardData, this.pageSize, this.currentPage);
   }
@@ -92,47 +91,47 @@ export class LeaderboardsModeComponent implements OnInit, OnChanges {
   }
 
   // Méthodes pour naviguer entre les pages
-    nextPage(): void {
-      if (this.currentPage < Math.ceil(this.leaderboardData.length / this.pageSize)) {
-        this.currentPage++;
-        this.paginateData();
-      }
+  nextPage(): void {
+    if (this.currentPage < Math.ceil(this.leaderboardData.length / this.pageSize)) {
+      this.currentPage++;
+      this.paginateData();
     }
+  }
 
-    previousPage(): void {
-      if (this.currentPage > 1) {
-        this.currentPage--;
-        this.paginateData();
-      }
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.paginateData();
     }
+  }
 
-    getPosition(index: any) {
-      return (this.currentPage - 1) * this.pageSize + index + 1 > 0 ? (this.currentPage - 1) * this.pageSize + index + 1 : 'NA';
-    }
+  getPosition(index: any) {
+    return (this.currentPage - 1) * this.pageSize + index + 1 > 0 ? (this.currentPage - 1) * this.pageSize + index + 1 : 'NA';
+  }
 
-    getFormatTime(time: any) {
-      return time > 0 ? formatTime(time) : '//';
-    }
+  getFormatTime(time: any) {
+    return time > 0 ? formatTime(time) : '//';
+  }
 
-    getIconSrc(): string {
-        switch (this.selectedMode) {
-          case GameSettings.MODE_JUMP:
-            return 'img/icons/jump.svg';
-          case GameSettings.MODE_DONJON:
-            return 'img/icons/castle.svg';
-          case GameSettings.MODE_HIPPODROME:
-            return 'img/icons/horse.svg';
-          case GameSettings.MODE_BATEAU:
-            return 'img/icons/boat.svg';
-          case GameSettings.MODE_ELYTRA:
-            return 'img/icons/wings.svg';
-          case GameSettings.MODE_MINAGE:
-            return 'img/icons/pickaxe.svg';
-          case GameSettings.MODE_ONE_HEART:
-            return 'img/icons/broken_heart.svg';
-          default:
-            return 'img/icons/jump.svg';
-        }
+  getIconSrc(): string {
+    switch (this.selectedMode) {
+      case GameSettings.MODE_JUMP:
+        return 'img/icons/jump.svg';
+      case GameSettings.MODE_DONJON:
+        return 'img/icons/castle.svg';
+      case GameSettings.MODE_HIPPODROME:
+        return 'img/icons/horse.svg';
+      case GameSettings.MODE_BATEAU:
+        return 'img/icons/boat.svg';
+      case GameSettings.MODE_ELYTRA:
+        return 'img/icons/wings.svg';
+      case GameSettings.MODE_MINAGE:
+        return 'img/icons/pickaxe.svg';
+      case GameSettings.MODE_ONE_HEART:
+        return 'img/icons/broken_heart.svg';
+      default:
+        return 'img/icons/jump.svg';
     }
+  }
 
 }
