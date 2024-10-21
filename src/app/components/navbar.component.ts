@@ -10,10 +10,7 @@ import { ApiService } from '../model/apiservice';
   templateUrl: './navbar.component.html',
   imports: [RouterModule, NgIf, NgClass, FormsModule]
 })
-export class NavbarComponent {
-  // homeLinkActive = false;
-  // leaderboardsLinkActive = false;
-  // rulesLinkActive = false; 
+export class NavbarComponent { 
   isMenuOpen: boolean = false;
   searchQuery: string = '';
   searchHasError: boolean = false;
@@ -40,22 +37,22 @@ export class NavbarComponent {
     }
   }
 
-    findUUIdByUsername() {
-    const observer = {
-        next: (response: any) => {
-          this.router.navigate(['/leaderboards', 'profile', response.name]);
-          //this.uuid = formatUUID(response.id);
-        },
-        error: (error: any) => {
-          console.error('Erreur lors de la récupération des données :', error);
-          this.setError();
-        },
-        complete: () => {
-          console.log('Appel API terminé');
-        }
-      };
-        this.apiService.getUUIDByUsername(this.searchQuery).subscribe(observer);
-    }
+  findUUIdByUsername() {
+  const observer = {
+      next: (response: any) => {
+        this.router.navigate(['/leaderboards', 'profile', response.name]);
+        //this.uuid = formatUUID(response.id);
+      },
+      error: (error: any) => {
+        console.error('Erreur lors de la récupération des données :', error);
+        this.setError();
+      },
+      complete: () => {
+        console.log('Appel API terminé');
+      }
+    };
+      this.apiService.getUUIDByUsername(this.searchQuery).subscribe(observer);
+  }
   
 
   setError() {

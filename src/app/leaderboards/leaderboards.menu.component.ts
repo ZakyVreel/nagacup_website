@@ -9,6 +9,4 @@ import { NgFor } from '@angular/common';
     standalone: true,
 })
 export class LeaderboardsMenuComponent {
-
-
 }

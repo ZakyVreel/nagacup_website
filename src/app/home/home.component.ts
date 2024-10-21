@@ -15,7 +15,7 @@ export class HomeComponent {
     videoTrailerUrl: SafeResourceUrl;
 
     constructor(private sanitizer: DomSanitizer) {
-        const videoId = 'xMeBKralo2o'; // Remplace par l'ID de la vidéo que tu veux afficher
+        const videoId = 'xMeBKralo2o';
         this.videoTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${videoId}`);
       }
 
