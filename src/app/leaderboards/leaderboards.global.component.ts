@@ -56,7 +56,12 @@ export class LeaderboardsGlobalComponent {
           this.isLoading = false;
         }
       };
-      if (this.selectedMode === GameSettings.STREAMER_ROUND1 || this.selectedMode === GameSettings.STREAMER_ROUND2 || this.selectedMode === GameSettings.STREAMER_ROUND3) {
+      if (this.selectedMode === GameSettings.STREAMER_ROUND1 ||
+        this.selectedMode === GameSettings.STREAMER_ROUND2 ||
+        this.selectedMode === GameSettings.STREAMER_ROUND3 ||
+        this.selectedMode === GameSettings.SCRIM2_1 ||
+        this.selectedMode === GameSettings.SCRIM2_2 ||
+        this.selectedMode === GameSettings.SCRIM2_3 ) {
         switch (this.selectedMode) {
           case GameSettings.STREAMER_ROUND1:
             chosenPhase = ApiService.STREAMERS_ROUND1; break;
@@ -64,6 +69,12 @@ export class LeaderboardsGlobalComponent {
             chosenPhase = ApiService.STREAMERS_ROUND2; break;
           case GameSettings.STREAMER_ROUND3:
             chosenPhase = ApiService.STREAMERS_ROUND3; break;
+          case GameSettings.SCRIM2_1:
+            chosenPhase = ApiService.SCRIM2_1; break;
+          case GameSettings.SCRIM2_2:
+            chosenPhase = ApiService.SCRIM2_2; break;
+          case GameSettings.SCRIM2_3:
+            chosenPhase = ApiService.SCRIM2_3; break;
           default:
             chosenPhase = ApiService.STREAMERS_ROUND1;
         }
