@@ -79,7 +79,12 @@
         <td class="td-text">
           <span [ngClass]="{
             'opacity-60': this.getFormatTime(item.totalTime) === '//' && (!item.currentTotalTime || item.currentTotalTime < 0) 
-          }" *ngIf="selectedMode === this.gameSettings.STREAMER_ROUND1 || selectedMode === gameSettings.STREAMER_ROUND2 || selectedMode === this.gameSettings.STREAMER_ROUND3">
+          }" *ngIf="selectedMode === this.gameSettings.STREAMER_ROUND1 ||
+          selectedMode === this.gameSettings.STREAMER_ROUND2 ||
+          selectedMode === this.gameSettings.STREAMER_ROUND3 ||
+          selectedMode === this.gameSettings.SCRIM2_1 ||
+          selectedMode === this.gameSettings.SCRIM2_2 ||
+          selectedMode === this.gameSettings.SCRIM2_3">
             {{ item.currentTotalTime && item.currentTotalTime > 0 ? this.getFormatTime(item.currentTotalTime) : this.getFormatTime(item.totalTime) }}
           </span>
         
