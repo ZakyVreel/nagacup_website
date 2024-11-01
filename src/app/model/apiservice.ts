@@ -20,6 +20,10 @@ export class ApiService {
   static readonly STREAMERS_ROUND2 = 'round2';
   static readonly STREAMERS_ROUND3 = 'round3';
 
+  static readonly SCRIM2_1 = 'scrim2-1';
+  static readonly SCRIM2_2 = 'scrim2-2';
+  static readonly SCRIM2_3 = 'scrim2-3';
+
 
   //temps en ms
 

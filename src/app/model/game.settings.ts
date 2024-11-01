@@ -12,4 +12,8 @@ export class GameSettings {
     static readonly STREAMER_ROUND2 = 'STREAMER.ROUND2';
     static readonly STREAMER_ROUND3 = 'STREAMER.ROUND3';
     static readonly STREAMER_TOTAL = 'STREAMER.TOTAL';
+
+    static readonly SCRIM2_1 = 'SCRIM2.1';
+    static readonly SCRIM2_2 = 'SCRIM2.2';
+    static readonly SCRIM2_3 = 'SCRIM2.3';
 }
