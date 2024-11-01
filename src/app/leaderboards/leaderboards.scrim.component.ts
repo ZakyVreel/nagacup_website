@@ -13,12 +13,11 @@ import { LeaderboardsTotalComponent } from "./leaderboards.total.component";
 })
 export class LeaderboardsScrimComponent {
   isDropdownOpen = false;
-  round1 = GameSettings.SCRIM2_1;
   round2 = GameSettings.SCRIM2_2;
   round3 = GameSettings.SCRIM2_3;
 
   
-  selectedMode = this.round1;
+  selectedMode = this.round2;
 
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -31,7 +30,6 @@ export class LeaderboardsScrimComponent {
 
   getAvailableModes(): string[] {
     return [
-      this.round1,
       this.round2,
       this.round3
     ].filter(mode => mode !== this.selectedMode);
@@ -39,14 +37,12 @@ export class LeaderboardsScrimComponent {
 
   getDropdownTitleName(mode: string): string {
     switch (mode) {
-      case GameSettings.SCRIM2_1:
-        return 'ROUND 1';
     case GameSettings.SCRIM2_2:
         return 'ROUND 2';
      case GameSettings.SCRIM2_3:
         return 'ROUND 3';
     default:
-        return 'ROUND 1';
+        return 'ROUND 2';
     }
 }
 }
