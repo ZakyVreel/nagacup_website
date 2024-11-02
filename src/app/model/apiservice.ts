@@ -32,6 +32,12 @@ export class ApiService {
   static readonly SAMEDI_6 = 'samedi-6';
   static readonly SAMEDI_7 = 'samedi-7';
 
+  static readonly DIMANCHE_ELIM = 'finals-1';
+  static readonly DIMANCHE_1 = 'finals-2';
+  static readonly DIMANCHE_2 = 'finals-3';
+  static readonly DIMANCHE_3 = 'finals-4';
+  static readonly DIMANCHE_TOTAL = 'dimanche-total';
+
 
   //temps en ms
 

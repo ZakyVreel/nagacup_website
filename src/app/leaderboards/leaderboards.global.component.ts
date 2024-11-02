@@ -404,6 +404,18 @@ export class LeaderboardsGlobalComponent {
             this.apiService.getSamediRounds().subscribe(observerSamedi);
             chosenPhase = this.selectedMode;
             break;
+          case GameSettings.DIMANCHE_ELIM:
+            chosenPhase = ApiService.DIMANCHE_ELIM;
+            break;
+          case GameSettings.DIMANCHE_1:
+            chosenPhase = ApiService.DIMANCHE_1;
+            break;
+          case GameSettings.DIMANCHE_2:
+            chosenPhase = ApiService.DIMANCHE_2;
+            break;
+          case GameSettings.DIMANCHE_3:
+            chosenPhase = ApiService.DIMANCHE_3;
+            break;
           default:
             chosenPhase = ApiService.STREAMERS_ROUND1;
         }
@@ -470,18 +482,36 @@ export class LeaderboardsGlobalComponent {
     return this.samediRounds ? this.samediRounds[0][`round${roundNumber}`] : 0;
   }
 
+  getDimancheRoundLimit(): number {
+    return 8;
+  }
+
   isSamediMode(): boolean {
     return this.selectedMode.startsWith("samedi-");
   }
 
-  isGreen(item: any): boolean {
+  isDimancheMode(): boolean {
+    return this.selectedMode.startsWith("dimanche-");
+  }
+
+  isGreenSamedi(item: any): boolean {
     const i = this.leaderboardData.indexOf(item);
     return this.isSamediMode() && i < this.leaderboardData.length - this.getSamediRoundLimit();
   }
 
-  isRed(item: any): boolean {
+  isRedSamedi(item: any): boolean {
     const i = this.leaderboardData.indexOf(item);
     return this.isSamediMode() && i >= this.leaderboardData.length - this.getSamediRoundLimit();
+  }
+
+  isGreenDimanche(item: any): boolean {
+    const i = this.leaderboardData.indexOf(item);
+    return this.selectedMode === GameSettings.DIMANCHE_ELIM  && i < this.leaderboardData.length - this.getDimancheRoundLimit();
+  }
+
+  isRedDimanche(item: any): boolean {
+    const i = this.leaderboardData.indexOf(item);
+    return this.selectedMode === GameSettings.DIMANCHE_ELIM && i >= this.leaderboardData.length - this.getDimancheRoundLimit();
   }
 
   isNotListed(uuid: any): boolean {

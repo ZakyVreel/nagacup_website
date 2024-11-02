@@ -9,6 +9,7 @@ import { RulesEventsComponent } from './rules/rules.events.component';
 import { RulesCompetitionsComponent } from './rules/rules.competitions.component';
 import { LeaderboardsScrimComponent } from './leaderboards/leaderboards.scrim.component';
 import { LeaderboardsQualifComponent } from './leaderboards/leaderboards.qualif.component';
+import { LeaderboardsFinaleComponent } from './leaderboards/leaderboards.finale.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ export const routes: Routes = [
     { path: 'leaderboards/streamer', component: LeaderboardsStreamerComponent },
     { path: 'leaderboards/scrim', component: LeaderboardsScrimComponent },
     { path: 'leaderboards/qualif', component: LeaderboardsQualifComponent },
+    { path: 'leaderboards/finale', component: LeaderboardsFinaleComponent },
     {
       path: 'rules',
       component: RulesComponent,

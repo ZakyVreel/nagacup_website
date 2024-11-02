@@ -24,4 +24,10 @@ export class GameSettings {
     static readonly SAMEDI_5 = 'samedi-5';
     static readonly SAMEDI_6 = 'samedi-6';
     static readonly SAMEDI_7 = 'samedi-7';
+
+    static readonly DIMANCHE_ELIM = 'dimanche-elim';
+    static readonly DIMANCHE_1 = 'dimanche-1';
+    static readonly DIMANCHE_2 = 'dimanche-2';
+    static readonly DIMANCHE_3 = 'dimanche-3';
+    static readonly DIMANCHE_TOTAL = 'dimanche-total';
 }
