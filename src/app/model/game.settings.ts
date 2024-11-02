@@ -16,4 +16,12 @@ export class GameSettings {
     static readonly SCRIM2_1 = 'SCRIM2.1';
     static readonly SCRIM2_2 = 'SCRIM2.2';
     static readonly SCRIM2_3 = 'SCRIM2.3';
+
+    static readonly SAMEDI_1 = 'samedi-1';
+    static readonly SAMEDI_2 = 'samedi-2';
+    static readonly SAMEDI_3 = 'samedi-3';
+    static readonly SAMEDI_4 = 'samedi-4';
+    static readonly SAMEDI_5 = 'samedi-5';
+    static readonly SAMEDI_6 = 'samedi-6';
+    static readonly SAMEDI_7 = 'samedi-7';
 }
