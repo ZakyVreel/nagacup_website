@@ -8,6 +8,7 @@ import { LeaderboardsProfileComponent } from './leaderboards/leaderboards.profil
 import { RulesEventsComponent } from './rules/rules.events.component';
 import { RulesCompetitionsComponent } from './rules/rules.competitions.component';
 import { LeaderboardsScrimComponent } from './leaderboards/leaderboards.scrim.component';
+import { LeaderboardsQualifComponent } from './leaderboards/leaderboards.qualif.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: 'leaderboards/global', component: LeaderboardsComponent },
     { path: 'leaderboards/streamer', component: LeaderboardsStreamerComponent },
     { path: 'leaderboards/scrim', component: LeaderboardsScrimComponent },
+    { path: 'leaderboards/qualif', component: LeaderboardsQualifComponent },
     {
       path: 'rules',
       component: RulesComponent,

@@ -24,6 +24,14 @@ export class ApiService {
   static readonly SCRIM2_2 = 'scrim2-2';
   static readonly SCRIM2_3 = 'scrim2-3';
 
+  static readonly SAMEDI_1 = 'samedi-1';
+  static readonly SAMEDI_2 = 'samedi-1';
+  static readonly SAMEDI_3 = 'samedi-3';
+  static readonly SAMEDI_4 = 'samedi-4';
+  static readonly SAMEDI_5 = 'samedi-5';
+  static readonly SAMEDI_6 = 'samedi-6';
+  static readonly SAMEDI_7 = 'samedi-7';
+
 
   //temps en ms
 
@@ -160,6 +168,10 @@ export class ApiService {
     getUsernameByUUID(uuid: any): Observable<any> {
       return this.http.get(`/mojang-ap/users/profiles/${uuid}/names`);
       //return this.http.get(`https://api.mojang.com/users/profiles/${uuid}/names`);
+    }
+
+    getSamediRounds(): Observable<any> {
+      return this.http.get(`https://67254f07c39fedae05b47708.mockapi.io/nagacup_api/samedi`);
     }
 
 

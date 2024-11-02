@@ -33,12 +33,16 @@
     </thead>
 
     <tbody class="table-leaderboards">
-      <tr *ngFor="let item of paginatedData; let i = index">
+      <tr *ngFor="let item of paginatedData; let i = index"
+      [ngClass]="{
+        'green-row-table': this.isSamediMode() && i < this.leaderboardData.length - this.getSamediRoundLimit(),
+        'red-row-table': this.isSamediMode() && i >= this.leaderboardData.length - this.getSamediRoundLimit()
+      }" >
         <td [ngClass]="{
           'td-text-gold': this.getPosition(i) === 1,
           'td-text-iron': this.getPosition(i) === 2,
           'td-text-bronze': this.getPosition(i) === 3,
-          'td-pseudo': this.getPosition(i) > 3
+          'td-pseudo': this.getPosition(i) > 3,
         }">{{ this.getPosition(i) }}</td>
         <td class="td-avatar td-text">
           <a [routerLink]="['/leaderboards/profile', item.username]">
@@ -79,12 +83,7 @@
         <td class="td-text">
           <span [ngClass]="{
             'opacity-60': this.getFormatTime(item.totalTime) === '//' && (!item.currentTotalTime || item.currentTotalTime < 0) 
-          }" *ngIf="selectedMode === this.gameSettings.STREAMER_ROUND1 ||
-          selectedMode === this.gameSettings.STREAMER_ROUND2 ||
-          selectedMode === this.gameSettings.STREAMER_ROUND3 ||
-          selectedMode === this.gameSettings.SCRIM2_1 ||
-          selectedMode === this.gameSettings.SCRIM2_2 ||
-          selectedMode === this.gameSettings.SCRIM2_3">
+          }" *ngIf="selectedMode !== this.gameSettings.MODE_GLOBAL">
             {{ item.currentTotalTime && item.currentTotalTime > 0 ? this.getFormatTime(item.currentTotalTime) : this.getFormatTime(item.totalTime) }}
           </span>
         
@@ -130,6 +129,14 @@
   border-spacing: 0 10px;
   width: 85%;
   margin: 0 auto;
+
+  .red-row-table td {
+  background-color: rgba(241, 81, 81, 0.2) !important;
+  }
+
+  .green-row-table td {
+    background-color: rgba(125, 211, 129, 0.3) !important;
+  }
 
   td:nth-child(1),
   th:nth-child(1) {
