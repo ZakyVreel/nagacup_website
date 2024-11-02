@@ -35,8 +35,8 @@
     <tbody class="table-leaderboards">
       <tr *ngFor="let item of paginatedData; let i = index"
       [ngClass]="{
-        'green-row-table': this.isGreen(item),
-        'red-row-table': this.isRed(item)
+        'green-row-table': this.isGreenSamedi(item) || this.isGreenDimanche(item),
+        'red-row-table': this.isRedSamedi(item) || this.isRedDimanche(item)
       }" >
         <td [ngClass]="{
           'td-text-gold': this.getPosition(i) === 1,
