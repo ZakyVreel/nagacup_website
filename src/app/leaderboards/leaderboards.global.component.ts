@@ -469,6 +469,16 @@ export class LeaderboardsGlobalComponent {
   isSamediMode(): boolean {
     return this.selectedMode.startsWith("samedi-");
   }
+
+  isGreen(item: any): boolean {
+    const i = this.leaderboardData.indexOf(item);
+    return this.isSamediMode() && i < this.leaderboardData.length - this.getSamediRoundLimit();
+  }
+
+  isRed(item: any): boolean {
+    const i = this.leaderboardData.indexOf(item);
+    return this.isSamediMode() && i >= this.leaderboardData.length - this.getSamediRoundLimit();
+  }
   
     
 }
