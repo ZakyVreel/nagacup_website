@@ -416,6 +416,10 @@ export class LeaderboardsGlobalComponent {
     if (this.selectedMode === GameSettings.MODE_GLOBAL) {
         this.getDetailedData();
     }
+
+    if (this.isSamediMode()) {
+      this.paginatedData = this.paginatedData.filter((element) => this.isNotListed(element.uuid));
+    }
   }
 
   changePage(page: number): void {
@@ -479,6 +483,10 @@ export class LeaderboardsGlobalComponent {
     const i = this.leaderboardData.indexOf(item);
     return this.isSamediMode() && i >= this.leaderboardData.length - this.getSamediRoundLimit();
   }
-  
+
+  isNotListed(uuid: any): boolean {
+    return uuid !== "264b9f5d-3791-4285-bb8d-e40a85ddcb08";
+  }
+    
     
 }
