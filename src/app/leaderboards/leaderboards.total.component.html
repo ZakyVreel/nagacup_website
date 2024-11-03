@@ -15,6 +15,9 @@
           <th class="sticky-header">
             <span class="th-total">#3</span>
           </th>
+          <th *ngIf="this.selectedMode === gameSettings.DIMANCHE_TOTAL" class="sticky-header">
+            <span class="th-total">#4</span>
+          </th>
           <th class="sticky-header">
             
           </th>
@@ -57,6 +60,9 @@
           <td [ngClass]="{
             'opacity-60': this.getPoints(item.round3) === 'NA'
           }" class="td-text">{{ this.getPoints(item.round3) }}</td>
+          <td *ngIf="this.selectedMode === gameSettings.DIMANCHE_TOTAL" [ngClass]="{
+            'opacity-60': this.getPoints(item.round4) === 'NA'
+          }" class="td-text">{{ this.getPoints(item.round4) }}</td>
           <td  class="td-text">
             <img src="img/icons/arrow.svg" alt="Arrow" class="icon-medium icon-center" />
           </td>

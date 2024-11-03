@@ -36,6 +36,7 @@ export class ApiService {
   static readonly DIMANCHE_1 = 'finals-2';
   static readonly DIMANCHE_2 = 'finals-3';
   static readonly DIMANCHE_3 = 'finals-4';
+  static readonly DIMANCHE_4 = 'finals-5';
   static readonly DIMANCHE_TOTAL = 'dimanche-total';
 
 
