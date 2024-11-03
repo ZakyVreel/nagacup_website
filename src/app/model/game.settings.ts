@@ -29,5 +29,6 @@ export class GameSettings {
     static readonly DIMANCHE_1 = 'dimanche-1';
     static readonly DIMANCHE_2 = 'dimanche-2';
     static readonly DIMANCHE_3 = 'dimanche-3';
+    static readonly DIMANCHE_4 = 'dimanche-4';
     static readonly DIMANCHE_TOTAL = 'dimanche-total';
 }

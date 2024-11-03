@@ -18,6 +18,6 @@
   </section>
     
   <section class="container mx-auto">
-    <app-leaderboards-global-component *ngIf="this.selectedMode === this.round1 || this.selectedMode === this.round2 || this.selectedMode === this.round3 || this.selectedMode === this.elim" [selectedMode]="selectedMode"></app-leaderboards-global-component>
+    <app-leaderboards-global-component *ngIf="this.selectedMode === this.round1 || this.selectedMode === this.round2 || this.selectedMode === this.round3 || this.selectedMode === this.round4 || this.selectedMode === this.elim" [selectedMode]="selectedMode"></app-leaderboards-global-component>
     <app-leaderboards-total-component *ngIf="this.selectedMode === this.total" [selectedMode]="selectedMode"></app-leaderboards-total-component>
   </section>

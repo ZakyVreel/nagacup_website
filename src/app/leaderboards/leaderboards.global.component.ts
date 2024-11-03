@@ -416,6 +416,9 @@ export class LeaderboardsGlobalComponent {
           case GameSettings.DIMANCHE_3:
             chosenPhase = ApiService.DIMANCHE_3;
             break;
+          case GameSettings.DIMANCHE_4:
+              chosenPhase = ApiService.DIMANCHE_4;
+              break;
           default:
             chosenPhase = ApiService.STREAMERS_ROUND1;
         }

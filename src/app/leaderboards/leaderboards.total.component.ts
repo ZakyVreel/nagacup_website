@@ -57,6 +57,17 @@ export class LeaderboardsTotalComponent {
       { username: "clemalb_", uuid: "cbe653a4-29bf-4d8b-8eb2-af9c66fa19d8", time: 795000 }
     ];
 
+    DIMANCHE_4 = [
+      { username: "bykraytox", uuid: "830c4e76-fbf6-4ed3-838a-10ede253dfa6", time: 770000 },
+      { username: "nol760", uuid: "26efa306-796d-4de5-b3c6-aca83f22d7ab", time: 772000 },
+      { username: "sheepmxn", uuid: "aeff396d-f9d2-4eef-b5a3-3506f93ec66e", time: 775000 },
+      { username: "gaake_", uuid: "befe320b-1ac1-410b-968d-72c540c1f859", time: 778000 },
+      { username: "romaincha", uuid: "dbbb83c4-8d93-4182-900d-53aa45c8307c", time: 780000 },
+      { username: "waaally", uuid: "14c81c94-63ab-4384-8001-1764b9633b24", time: 785000 },
+      { username: "eallyos", uuid: "6f98b3f3-38ea-43a7-b113-93395fbaee3f", time: 790000 },
+      { username: "clemalb_", uuid: "cbe653a4-29bf-4d8b-8eb2-af9c66fa19d8", time: 795000 }
+    ];
+
 
     constructor(private apiService: ApiService, private paginationService: PaginationService) {}
     ngOnInit(): void {
@@ -98,14 +109,16 @@ export class LeaderboardsTotalComponent {
         forkJoin([
           this.apiService.getSmartLeaderboardByName(ApiService.DIMANCHE_1),
           this.apiService.getSmartLeaderboardByName(ApiService.DIMANCHE_2),
-          this.apiService.getSmartLeaderboardByName(ApiService.DIMANCHE_3)
+          this.apiService.getSmartLeaderboardByName(ApiService.DIMANCHE_3),
+          this.apiService.getSmartLeaderboardByName(ApiService.DIMANCHE_4)
         ]).subscribe({
-          next: ([run1Data, run2Data, run3Data]: [any[], any[], any[]]) => {
+          next: ([run1Data, run2Data, run3Data, run4Data]: [any[], any[], any[], any[]]) => {
             const playerPointsMap = new Map<string, any>();
 
             // run1Data = this.DIMANCHE_1;
             // run2Data = this.DIMANCHE_2;
             // run3Data = this.DIMANCHE_3;
+            // run4Data = this.DIMANCHE_4;
     
             const calculatePoints = (runData: any[], roundKey: string) => {
               const totalPlayers = runData.length;
@@ -128,6 +141,7 @@ export class LeaderboardsTotalComponent {
             calculatePoints(run1Data, 'round1');
             calculatePoints(run2Data, 'round2');
             calculatePoints(run3Data, 'round3');
+            calculatePoints(run4Data, 'round4');
     
             this.leaderboardData = Array.from(playerPointsMap.values()).sort(
               (a, b) => b.points - a.points

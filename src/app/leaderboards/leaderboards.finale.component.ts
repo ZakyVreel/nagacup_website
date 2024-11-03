@@ -17,6 +17,7 @@ export class LeaderboardsFinaleComponent {
   round1 = GameSettings.DIMANCHE_1;
   round2 = GameSettings.DIMANCHE_2;
   round3 = GameSettings.DIMANCHE_3;
+  round4 = GameSettings.DIMANCHE_4;
   total = GameSettings.DIMANCHE_TOTAL;
 
   
@@ -37,6 +38,7 @@ export class LeaderboardsFinaleComponent {
         this.round1,
         this.round2,
         this.round3,
+        this.round4,
         this.total
     ].filter(mode => mode !== this.selectedMode);
   }
@@ -51,6 +53,8 @@ export class LeaderboardsFinaleComponent {
         return 'ROUND 2';
      case GameSettings.DIMANCHE_3:
         return 'ROUND 3';
+        case GameSettings.DIMANCHE_4:
+        return 'ROUND 4';
     case GameSettings.DIMANCHE_TOTAL:
         return 'TOTAL';
     default:
@@ -68,6 +72,8 @@ export class LeaderboardsFinaleComponent {
             return 'ROUND 2';
          case GameSettings.DIMANCHE_3:
             return 'ROUND 3';
+        case GameSettings.DIMANCHE_4:
+            return 'ROUND 4';
         case GameSettings.DIMANCHE_TOTAL:
             return 'TOTAL';
         default:
